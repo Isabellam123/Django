@@ -1,5 +1,6 @@
 from django.views import generic
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 from .models import NewsStory
 from .forms import StoryForm
 
@@ -28,13 +29,14 @@ class AddStoryView(generic.CreateView):
     template_name = 'news/createStory.html'
     success_url = reverse_lazy('news:index')
 
+    @login_required
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
     
-    def get_author_name(self, **kwargs):
-        user = self.get_object(pk)
-        context = {}
-        context['latest_stories'] = NewsStory.objects.all().filter(author=user)[:4]
-        context['all_stories'] = NewsStory.objects.all().filter(author=user).all()
-        return context
+    # def get_author_name(self, **kwargs):
+    #     user = self.get_object(pk)
+    #     context = {}
+    #     context['latest_stories'] = NewsStory.objects.all().filter(author=user)[:4]
+    #     context['all_stories'] = NewsStory.objects.all().filter(author=user).all()
+    #     return context
