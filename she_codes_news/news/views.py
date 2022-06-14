@@ -28,6 +28,10 @@ class StoryView(generic.DetailView):
 class AuthorView(generic.DetailView):
     template_name = 'news/author.html'
     context_object_name = 'author'
+    
+    def get_queryset(self):
+        author_id = self.kwargs['pk']
+        return NewsStory.objects.filter(author = author_id, pub_date=timezone.now()).order_by("-pub_date")
 
 class AddStoryView(generic.CreateView):
     form_class = StoryForm
