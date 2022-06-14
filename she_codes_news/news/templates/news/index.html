@@ -8,10 +8,12 @@
 {% block content %}
 
 <div id="users_filter">
-    {% if users_filter %}
-    {% for user in users_filter %}
-    <p> Filter Stories by {{ user }} </p>
-    {% endfor %}
+    <span>
+        {% if users_filter %}
+        {% for user in users_filter %}
+        <p> Filter Stories by {{ user }} </p>
+        {% endfor %}
+    </span>
     {% else %}
     <p>No stories are available.</p>
     {% endif %}
