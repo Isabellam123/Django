@@ -2,6 +2,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from django.contrib.auth import get_user_model
 from .models import NewsStory
+from .models import AuthorStory
 from .forms import StoryForm
 
 
@@ -23,6 +24,11 @@ class StoryView(generic.DetailView):
     model = NewsStory
     template_name = 'news/story.html'
     context_object_name = 'story'
+    
+class AuthorView(generic.DetailView):
+    model = AuthorStory
+    template_name = 'news/author.html'
+    context_object_name = 'author'
 
 class AddStoryView(generic.CreateView):
     form_class = StoryForm
