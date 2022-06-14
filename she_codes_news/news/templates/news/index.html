@@ -11,7 +11,7 @@
     <span>
         {% if users_filter %}
         {% for user in users_filter %}
-        <a href="{% url 'news:author' %}">Filter Stories by {{ user }}</a>
+        <a href="{% url 'news:author' user.id %}">Filter Stories by {{ user }}</a>
         {% endfor %}
     </span>
     {% else %}
