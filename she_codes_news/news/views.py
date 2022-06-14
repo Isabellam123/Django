@@ -1,6 +1,6 @@
 from django.views import generic
 from django.urls import reverse_lazy
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
 from .models import NewsStory
 from .forms import StoryForm
 
@@ -14,6 +14,7 @@ class IndexView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['users_filter'] = get_user_model().objects.all()
         context['latest_stories'] = NewsStory.objects.all().order_by('-pub_date')[:4]
         context['all_stories'] = NewsStory.objects.all().order_by('-pub_date')
         return context
