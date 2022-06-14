@@ -15,6 +15,3 @@ class NewsStory(models.Model):
 class AuthorStory(models.Model):
     user = models.OneToOneField(get_user_model(),on_delete=models.CASCADE)
     author = user.name
-
-    def __str__(self):
-        return self.author.username
