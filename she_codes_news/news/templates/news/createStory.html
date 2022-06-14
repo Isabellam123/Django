@@ -3,6 +3,8 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'static/styles.css' %}">
 {% block content %}
+
+{% if request.user.is_authenticated %}
 <div>
     <form action="" method="post">
         {% csrf_token %}
@@ -10,5 +12,8 @@
         <input type="submit" value="submit">
     </form>
 </div>
+{% else %}
+<p>Please log in to write a news story.</p>
+{% endif %}
 
 {% endblock %}
