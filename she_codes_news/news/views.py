@@ -31,7 +31,7 @@ class AuthorView(generic.DetailView):
     
     def get_queryset(self):
         author_id = self.kwargs['pk']
-        return NewsStory.objects.filter(author = author_id, pub_date=timezone.now()).order_by("-pub_date")
+        return NewsStory.objects.filter(author = author_id)
 
 class AddStoryView(generic.CreateView):
     form_class = StoryForm
