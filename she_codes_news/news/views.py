@@ -26,7 +26,6 @@ class StoryView(generic.DetailView):
     context_object_name = 'story'
     
 class AuthorView(generic.DetailView):
-    model = AuthorStory
     template_name = 'news/author.html'
     context_object_name = 'author'
 
