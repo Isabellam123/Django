@@ -10,7 +10,7 @@
 <div id="users_filter">
     {% if users_filter %}
     {% for user in users_filter %}
-    <p> Filter Stories by {% user.AuthorName %} </p>
+    <p> Filter Stories by {% user.author %} </p>
     {% endfor %}
     {% else %}
     <p>No stories are available.</p>
