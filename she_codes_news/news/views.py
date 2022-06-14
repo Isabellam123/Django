@@ -35,8 +35,8 @@ class AuthorView(generic.DetailView):
         return context
 
     def get_queryset(self):
-        author_id = self.kwargs['pk']
-        return NewsStory.objects.filter(author = author_id,)
+        author = get_user_model().objects.filter(self.kwargs['pk'])
+        return NewsStory.objects.filter(author = author)
 
 class AddStoryView(generic.CreateView):
     form_class = StoryForm
