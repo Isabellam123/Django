@@ -2,7 +2,6 @@ from django.views import generic
 from django.urls import reverse_lazy
 from django.contrib.auth import get_user_model
 from .models import NewsStory
-from .models import AuthorStory
 from .forms import StoryForm
 
 
