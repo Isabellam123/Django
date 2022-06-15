@@ -12,6 +12,3 @@ class NewsStory(models.Model):
     content = models.TextField()
     image_url = models.URLField(max_length=200)  
     
-class AuthorStory(models.Model):
-    user = models.OneToOneField(get_user_model(),on_delete=models.CASCADE)
-    author = user.name

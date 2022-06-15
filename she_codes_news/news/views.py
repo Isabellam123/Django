@@ -7,7 +7,7 @@ from .forms import StoryForm
 
 
 class IndexView(generic.ListView):
-    template_name = 'news/index.html'
+    template_name = 'index.html'
 
     def get_queryset(self):
         '''Return all news stories.'''
