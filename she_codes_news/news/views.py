@@ -33,6 +33,10 @@ class AuthorView(generic.DetailView):
         context['user'] = get_user_model().objects.find(pk)
         context['authors_stories'] = NewsStory.objects.all().order_by('-pub_date')[:4]
         return context
+    
+    def get_queryset(self):
+        author_id = self.kwargs['pk']
+        return NewsStory.objects.filter(author = author_id,)
 class AddStoryView(generic.CreateView):
     form_class = StoryForm
     context_object_name = 'storyForm'
